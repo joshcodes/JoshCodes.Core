@@ -51,6 +51,21 @@ namespace JoshCodes.Core.Urns.Extensions
             return (uri.Scheme.ToLower().Equals("urn"));
         }
 
+        public static bool TryParseUrnNamespaceString(this Uri uri, out string[] nss, out string nid)
+        {
+            try
+            {
+                nss = uri.ParseUrnNamespaceString(out nid);
+            }
+            catch (Exception)
+            {
+                nss = null;
+                nid = null;
+                return false;
+            }
+            return true;
+        }
+
 		public static string [] ParseUrnNamespaceString(this Uri uri, out string nid)
 		{
 			if(!uri.IsUrn())
