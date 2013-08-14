@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace JoshCodes.Drawing
 {
@@ -13,7 +14,9 @@ namespace JoshCodes.Drawing
         /// <param name="width">The width to resize to.</param>
         /// <param name="height">The height to resize to.</param>
         /// <returns>The resized image.</returns>
-        public static System.Drawing.Bitmap Resize(this System.Drawing.Image image, int width, int height)
+        public static System.Drawing.Bitmap Resize(this System.Drawing.Image image, int width, int height,
+            InterpolationMode interpolationMode = InterpolationMode.HighQualityBicubic,
+            SmoothingMode smoothingMode = SmoothingMode.HighQuality)
         {
             //a holder for the result
             Bitmap result = new Bitmap(width, height);
@@ -25,8 +28,8 @@ namespace JoshCodes.Drawing
             {
                 //set the resize quality modes to high quality
                 graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                graphics.InterpolationMode = interpolationMode;
+                graphics.SmoothingMode = smoothingMode;
                 //draw the image into the target bitmap
                 graphics.DrawImage(image, 0, 0, result.Width, result.Height);
             }
