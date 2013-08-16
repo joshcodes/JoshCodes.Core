@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace JoshCodes.Drawing
 {
@@ -36,6 +38,14 @@ namespace JoshCodes.Drawing
 
             //return the resulting bitmap
             return result;
+        }
+
+        public static Stream Save(this Bitmap bitmap, ImageFormat format)
+        {
+            var stream = new MemoryStream();
+            bitmap.Save(stream, format);
+            stream.Position = 0;
+            return stream;
         }
     }
 }
