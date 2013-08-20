@@ -39,6 +39,7 @@
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
+    <Compile Include="Net\GenericExtensions.cs" />
     <Compile Include="Urn\UrnExtensions.cs" />
     <Compile Include="Urn\UrnFactory.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />

@@ -29,5 +29,10 @@ namespace JoshCodes.Collections.Generic
             }
             return dictionary;
         }
+
+        public static IEnumerable<T> ToEnumerable<T>(this T item)
+        {
+            yield return item;
+        }
     }
 }
