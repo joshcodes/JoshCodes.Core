@@ -44,6 +44,7 @@
     <Compile Include="KeyEqualityComparer.cs" />
     <Compile Include="Net\GenericExtensions.cs" />
     <Compile Include="Net\ResponseExtensions.cs" />
+    <Compile Include="SecureGuid.cs" />
     <Compile Include="Urn\UrnExtensions.cs" />
     <Compile Include="Urn\UrnFactory.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
