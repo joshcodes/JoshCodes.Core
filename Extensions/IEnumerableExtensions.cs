@@ -34,5 +34,34 @@ namespace JoshCodes.Collections.Generic
         {
             yield return item;
         }
+
+        public static T SelectRandom<T>(this IEnumerable<T> items, int total)
+        {
+            var rand = new Random();
+            var totalD = (double)total;
+            var arrayItems = new T[total];
+            var arrayItemsIndex = 0;
+            foreach (var item in items)
+            {
+                if (rand.NextDouble() < (1.0 / totalD))
+                {
+                    return item;
+                }
+                totalD -= 1.0;
+                arrayItems[arrayItemsIndex] = item;
+                arrayItemsIndex++;
+            }
+            if (arrayItemsIndex == 0)
+            {
+                return default(T);
+            }
+            var selectedIndex = (int)(arrayItemsIndex * rand.NextDouble());
+            return arrayItems[selectedIndex];
+        }
+
+        public static T SelectRandom<T>(this IEnumerable<T> items)
+        {
+            return items.SelectRandom(items.Count());
+        }
     }
 }
