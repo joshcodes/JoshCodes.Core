@@ -63,5 +63,30 @@ namespace JoshCodes.Collections.Generic
         {
             return items.SelectRandom(items.Count());
         }
+
+        public static TItem MinOn<TItem, TValue>(this IEnumerable<TItem> items, Func<TItem, TValue> selector)
+            where TValue : IComparable
+        {
+            bool firstValueSet = false;
+            var minValue = default(TValue);
+            var minItem = default(TItem);
+            foreach (var item in items)
+            {
+                var candidateValue = selector.Invoke(item);
+                if (!firstValueSet)
+                {
+                    minItem = item;
+                    minValue = candidateValue;
+                    firstValueSet = true;
+                    continue;
+                }
+                if (candidateValue.CompareTo(minValue) < 0)
+                {
+                    minItem = item;
+                    minValue = candidateValue;
+                }
+            }
+            return minItem;
+        }
     }
 }
