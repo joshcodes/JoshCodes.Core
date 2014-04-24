@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using JoshCodes.Core;
+
 namespace JoshCodes.Collections.Generic
 {
     public static class IEnumerableExtensions
@@ -87,6 +89,30 @@ namespace JoshCodes.Collections.Generic
                 }
             }
             return minItem;
+        }
+
+        public static IEnumerable<T> SubsetRandom<T>(this IEnumerable<T> items, int min, int max)
+        {
+            var rand = new Random();
+            var remainingItems = new List<T>(items);
+
+            var total = new Random().Between(min, max);
+            int count = 0;
+            while (count < total)
+            {
+                if(remainingItems.Count == 0)
+                {
+                    if(count < min)
+                    {
+                        throw new ArgumentException("min", "Minimum is greater than total number of items from which to subselect");
+                    }
+                    yield break;
+                }
+                var selectedItem = remainingItems.SelectRandom();
+                remainingItems.Remove(selectedItem);
+                yield return selectedItem;
+                count++;
+            }
         }
     }
 }

@@ -40,11 +40,13 @@
     <Compile Include="Drawing\BitmapExtensions.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="KeyEqualityComparer.cs" />
     <Compile Include="Net\GenericExtensions.cs" />
     <Compile Include="Net\ResponseExtensions.cs" />
     <Compile Include="SecureGuid.cs" />
+    <Compile Include="Urn\RFC4122Utilility.cs" />
     <Compile Include="Urn\UrnExtensions.cs" />
     <Compile Include="Urn\UrnFactory.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
