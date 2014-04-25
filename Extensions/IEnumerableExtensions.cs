@@ -37,9 +37,12 @@ namespace JoshCodes.Collections.Generic
             yield return item;
         }
 
-        public static T SelectRandom<T>(this IEnumerable<T> items, int total)
+        public static T SelectRandom<T>(this IEnumerable<T> items, int total, Random rand = null)
         {
-            var rand = new Random();
+            if (rand == null)
+            {
+                rand = new Random();
+            }
             var totalD = (double)total;
             var arrayItems = new T[total];
             var arrayItemsIndex = 0;
@@ -61,9 +64,9 @@ namespace JoshCodes.Collections.Generic
             return arrayItems[selectedIndex];
         }
 
-        public static T SelectRandom<T>(this IEnumerable<T> items)
+        public static T SelectRandom<T>(this IEnumerable<T> items, Random rand = null)
         {
-            return items.SelectRandom(items.Count());
+            return items.SelectRandom(items.Count(), rand);
         }
 
         public static TItem MinOn<TItem, TValue>(this IEnumerable<TItem> items, Func<TItem, TValue> selector)
