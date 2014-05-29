@@ -7,6 +7,20 @@ namespace JoshCodes.Collections.Generic
 {
     public static class DictionaryExtensions
     {
+        public static string ToDelimitedString<TKey, TValue>(
+            this IDictionary<TKey, TValue> dictionary, string keyValueDelimeter, string sequenceDelimeter)
+        {
+            var stringBuilder = new StringBuilder();
+            dictionary.ForEach(x => stringBuilder.AppendFormat(
+                "{0}{1}{2}{3}",
+                x.Key.ToString(),
+                keyValueDelimeter,
+                x.Value.ToString(),
+                sequenceDelimeter
+            ));
+            return stringBuilder.ToString(0, stringBuilder.Length - sequenceDelimeter.Length);
+        }
+
         public static TValue GetOrCreate<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TKey, TValue> createExpr)
         {
             if(dictionary.ContainsKey(key))

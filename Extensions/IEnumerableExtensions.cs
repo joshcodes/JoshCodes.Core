@@ -10,6 +10,14 @@ namespace JoshCodes.Collections.Generic
 {
     public static class IEnumerableExtensions
     {
+        public static void ForEach<T>(this IEnumerable<T> items, Action<T> action)
+        {
+            foreach (var item in items)
+            {
+                action(item);
+            }
+        }
+
         public static IDictionary<TKey, TValue> ToDictionary<TKey, TValue, TItem>(
             this IEnumerable<TItem> items, Func<TItem, TKey> keySelector, Func<TItem, TValue> valueSelector)
         {
